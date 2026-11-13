@@ -1,30 +1,46 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Your Site Name</title>
-    <meta name="description" content="A fast, accessible starter site." />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>LevelUp Fit | Workout Game</title>
+    <meta name="description" content="A daily workout game. Earn XP, build streaks, and climb 120 ranks. Bodyweight or gym." />
+    <meta name="theme-color" content="#0b0b1a" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script type="module" src="/src/js/main.js"></script>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <script type="module" src="/src/js/app/app.js"></script>
   </head>
-  <body>
+  <body class="app">
+    <a class="skip-link" href="#app">Skip to content</a>
+
     <header class="site-header">
-      <a class="brand" href="/">Your Site Name</a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" class="site-nav" aria-label="Main">
-        <a href="/">Home</a>
-        <a href="/about.html">About us</a>
-      </nav>
-      <button class="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false">◐</button>
+      <div class="wrapper app-bar">
+        <a class="brand" href="/">LevelUp<span>Fit</span></a>
+        <div class="header-chips" id="header-chips"></div>
+      </div>
     </header>
-    <main>
-      <section class="hero">
-        <h1>Build something great</h1>
-        <p>A fast, accessible starting point for your next site.</p>
-        <a class="button" href="/about.html">Get started</a>
-      </section>
-    </main>
-    <footer class="site-footer"><p>&copy; Your Site Name</p></footer>
+
+    <main id="app" class="app-main" tabindex="-1"></main>
+
+    <nav class="tabbar" aria-label="Sections">
+      <button class="tab" type="button" data-view="today"><span aria-hidden="true">⚡</span>Today</button>
+      <button class="tab" type="button" data-view="progress"><span aria-hidden="true">📈</span>Progress</button>
+      <button class="tab" type="button" data-view="ranks"><span aria-hidden="true">🏅</span>Ranks</button>
+      <button class="tab" type="button" data-view="settings"><span aria-hidden="true">⚙️</span>Settings</button>
+    </nav>
+
+    <dialog id="session" class="modal glass" aria-label="Workout">
+      <div id="session-body" class="modal-body"></div>
+    </dialog>
+
+    <dialog id="notice" class="modal glass" aria-label="Notice">
+      <div class="modal-body">
+        <div id="notice-body"></div>
+        <button class="btn btn-lg" type="button" data-close>Got it</button>
+      </div>
+    </dialog>
+
+    <div id="levelup" class="overlay" role="dialog" aria-modal="true" aria-labelledby="lu-title" hidden></div>
+    <div id="toasts" aria-live="polite"></div>
   </body>
 </html>
